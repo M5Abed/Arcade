@@ -53,6 +53,7 @@ int RockPaperScissors::play() {
         if ((input[0]=='r'&&res==1)||(input[0]=='p'&&res==2)||(input[0]=='s'&&res==3)) {
             draw=true;
             cout<<"The PC chose the same :D, We gonna play again\n";
+            sleep_for(1.5s);
             system("cls");
         }
         else if ((input[0]=='r'&&res==2)) {
@@ -78,7 +79,7 @@ int RockPaperScissors::play() {
             sleep_for(1.5s);
             system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
         else if ((input[0]=='p'&&res==1)) {
@@ -91,7 +92,7 @@ int RockPaperScissors::play() {
             sleep_for(1.5s);
             system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
         else if ((input[0]=='p'&&res==3)) {
@@ -104,7 +105,7 @@ int RockPaperScissors::play() {
             sleep_for(1.5s);
             system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
         else if ((input[0]=='s'&&res==1)) {
@@ -117,7 +118,7 @@ int RockPaperScissors::play() {
             sleep_for(1.5s);
             system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
         else if ((input[0]=='s'&&res==2)) {
@@ -130,7 +131,7 @@ int RockPaperScissors::play() {
             sleep_for(1.5s);
             system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
     }while (draw||input[0]!='e');
@@ -429,29 +430,32 @@ int TicTacToe::play() {
 Hangman::Hangman(){
     Hangman::Name="HangMan";
     Hangman::Develper="Salma Hany";
-    Hangman::HTP="\n\t\t\t\t\"Yu have 5 attempts to guess the right word character by character\" \n";
+    Hangman::HTP="\n\t\t\"You have 5 attempts to guess the right word character by character\" \n";
     Hangman::Getdata();
     sleep_for(3s);
     srand(time(0));  //each time the program runs a different sequence of random numbers will be generated
     word = words[rand()%5];  //rand() selects a random word "%5" makes sure the result is within the range of indices of array
     guessedWord = string(word.length(),'_');
-    maxAttempts = 7;
+    maxAttempts = 5;
     remainingAttempts = maxAttempts;
     //numGuessLetters=0;
 }
-bool Hangman::isAlreadyGuessed(char letter){
+bool Hangman::isAlreadyGuessed (char letter)
+{
     for(int i=0;i<numGuessdLetters;i++)
     {
         if(guessedLetters[i]==letter){return true;}  //indicates the letter has been already guessed
     }
     return false;
 }
+
 int Hangman::play()
 {
     char letter;
-    cout<<"Guess the word: ";
-    while(remainingAttempts>0&&guessedWord != word)
+
+    while(remainingAttempts > 0 && guessedWord != word)
     {
+        cout<<"Guess the word: ";
         cout<<guessedWord<<endl;
         cout<<"Enter a letter: ";
         cin>>letter;
@@ -479,24 +483,25 @@ int Hangman::play()
                 found=true;
             }
         }
+
         if(!found)
         {
             cout<<"Incorrect guess!"<<endl;
             remainingAttempts--;
             cout<<"Remaining attempts: "<<remainingAttempts<<endl;
         }
-        if(guessedWord==word)
-        {
-            cout<<"Congratulations1! You guessed the word: "<<word<<endl;
-        }
-        else
-        {
-            cout<<"Sorry, you ran out of attempts :(\nThe word was: "<<word<<endl;
-        }
     }
-    sleep_for(3s);
-    system("cls");
+
+    if(guessedWord==word)
+    {
+        cout<<"Congratulations! You guessed the word: "<<word<<endl;
+    }
+    else
+    {
+        cout<<"Sorry, you ran out of attempts :(\nThe word was: "<<word<<endl;
+    }
     return main();
 }
+
 
 //memory game
