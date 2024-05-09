@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "arcade_hub"
+			"path" : "Arcasde_hub.exe"
+		},
+		{
+			"path" : "Arcasde_hub.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -24,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 7,
 				"parent" : 0
 			}
 		]
@@ -54,7 +57,7 @@
 			]
 		}
 	],
-	"id" : "arcade_hub::@6890427a1f51a3e7e1df",
+	"id" : "Arcasde_hub::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -64,14 +67,18 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "",
+				"fragment" : "-static",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "arcade_hub",
-	"nameOnDisk" : "arcade_hub",
+	"name" : "Arcasde_hub",
+	"nameOnDisk" : "Arcasde_hub.exe",
 	"paths" : 
 	{
 		"build" : ".",

@@ -6,10 +6,10 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.28"
+						"string" : "3.26"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "arcade_hub",
+					"name" : "Arcasde_hub",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "arcade_hub::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-arcade_hub-Debug-8ce45257f9c728e31060.json",
-					"name" : "arcade_hub",
+					"id" : "Arcasde_hub::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Arcasde_hub-Debug-9a36d0af406d7f938d57.json",
+					"name" : "Arcasde_hub",
 					"projectIndex" : 0
 				}
 			]
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/green/Documents/CLionProjects/arcade hub/cmake-build-debug",
-		"source" : "/home/green/Documents/CLionProjects/arcade hub"
+		"build" : "C:/Users/moham/CLionProjects/Arcasde hub/cmake-build-debug",
+		"source" : "C:/Users/moham/CLionProjects/Arcasde hub"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 5
 	}
 }

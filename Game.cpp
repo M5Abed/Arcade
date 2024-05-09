@@ -1,14 +1,15 @@
 #include "Game.h"
 #include <utility>
+
 //main class
 void Game::SetName(string name) {
-    this->Name = move(name);
+    this->Name = std::move(name);
 }
 void Game::SetDev(string dev) {
-    this->Develper =move(dev);
+    this->Develper =std::move(dev);
 }
 void Game::SetHTP(string HTP) {
-    this->HTP = move(HTP);
+    this->HTP = std::move(HTP);
 }
 void Game::Getdata() {
     cout<<"The name of the the game: "<<Name<<endl;
@@ -18,24 +19,24 @@ void Game::Getdata() {
     cout<<"How to play this game: "<<HTP<<endl;
 
 }
-int main(); //main decleration to cam make it as return in classes below
+int main(); //main declaration to cam make it as return in classes below
 
 //Rock paper scissors
 RockPaperScissors::RockPaperScissors() {
-    RockPaperScissors::Name="Rock Paper Scissors";
+    RockPaperScissors::SetName("Rock Paper Scissors");
     RockPaperScissors::Develper="Mohamed Abed";
     RockPaperScissors::HTP="\n\t\t\t\t\"You will play this game vs PC \n\t\t\t You will chose ROCK,PAPER OR SCISSORS and the PC will chose one also and will see who wil gain more points\" \n";
     RockPaperScissors::Getdata();
     sleep_for(3s);
 }
 int RockPaperScissors::play() {
-  bool draw=false;
+    bool draw=false;
     int pc=0;
     string input,output;
     cout<<"----------------------------------------\n";
     cout<<"\"Welcome to ROCK, PAPER, SCISSORS game\"\n";
     cout<<"----------------------------------------\n";
-    sleep_for(1s);;
+    sleep_for(1s);
     do {
         srand(time(nullptr));
         Rand = rand();
@@ -55,9 +56,9 @@ int RockPaperScissors::play() {
         }
         else if ((input[0]=='r'&&res==2)) {
             cout<<"You: "<<"Rock\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"PC: "<<"Paper\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"PC Win !!\n";
             pc++;
             cout<<"-------------------------\n";
@@ -66,9 +67,9 @@ int RockPaperScissors::play() {
         }
         else if ((input[0]=='r'&&res==3)) {
             cout<<"You: "<<"Rock\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"PC: "<<"Scissors\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"You Win !!\n";
             this->Points++;
             cout<<"-------------------------\n";
@@ -77,9 +78,9 @@ int RockPaperScissors::play() {
         }
         else if ((input[0]=='p'&&res==1)) {
             cout<<"You: "<<"Paper\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"PC: "<<"Rock\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"You Win !!\n";
             this->Points++;
             cout<<"-------------------------\n";
@@ -88,9 +89,9 @@ int RockPaperScissors::play() {
         }
         else if ((input[0]=='p'&&res==3)) {
             cout<<"You: "<<"Paper\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"PC: "<<"Scissors\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"PC Win !!\n";
             pc++;
             cout<<"-------------------------\n";
@@ -99,9 +100,9 @@ int RockPaperScissors::play() {
         }
         else if ((input[0]=='s'&&res==1)) {
             cout<<"You: "<<"Scissors\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"PC: "<<"Rock\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"PC Win !!\n";
             pc++;
             cout<<"-------------------------\n";
@@ -110,9 +111,9 @@ int RockPaperScissors::play() {
         }
         else if ((input[0]=='s'&&res==2)) {
             cout<<"You: "<<"Scissors\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"PC: "<<"Paper\n";
-            sleep_for(0.5s);;
+            sleep_for(0.5s);
             cout<<"You Win !!\n";
             this->Points++;
             cout<<"-------------------------\n";
@@ -127,7 +128,7 @@ int RockPaperScissors::play() {
 Gussing::Gussing() {
     Gussing::Name="Gussing Game";
     Gussing::Develper="Mohamed Abed";
-    Gussing::HTP="\n\t\t\t\t\"You will enter a number(x) to guess random nubmer between 0 and (x) \n\t\t\t then you will have 3 attemtps to guss the random number that computer chosed\" \n";
+    Gussing::HTP="\n\t\"You will enter a number(x) to guess random number between 0 and (x) \n      then you will have 3 attempts to guss the random number that computer chose\" \n";
     Gussing::Getdata();
     sleep_for(3s);
 }
@@ -143,16 +144,16 @@ int Gussing::play(){
         cout<<"Are You sure you want to guess number between 0 and "<<high<<"? (y/n)\n";
         cin>>input;
         if (input[0]<97) {
-            for (int i=0;i<sizeof(input);i++)
+            for (int i=0;i<input.size();i++)
                 input[i]+=32;
         }
     }while (input[0]!='y'&&input[0]!='e'&&input[0]!='n');
     if (input[0]=='y') {
         cout<< "wait a second ...\n"<<flush;
         sleep_for(1.5s);
-        }
+    }
     else if (input[0]=='e'||input[0]=='n'){
-        system("clear");
+        system("pause");
         return main();
     }
 
@@ -201,18 +202,20 @@ int Gussing::play(){
         cout<<"Thanks to play our game :D  \n";
     }
     else {
-        cout<<"It seems like thats not your day :D \n";
+        cout<<"It seems like that's not your day :D \n";
         cout<<"The answer was: "<<value<<endl;
     }
+    system("pause");
+    system("cls");
     return main();
 }
 
 //Connect 4
-Conncect4::Conncect4() {
-    Conncect4::Name="Connect 4";
-    Conncect4::Develper="Khaled Youssef";
-    Conncect4::HTP="\n\t\t\t\t\"Connect Four is a classic two-player game where the goal is to get four of your X,or,O checkers in a row\n\t\t\t\t\t either horizontally, vertically, or diagonally note in this game player 1 is X , player 2 is O\" \n";
-    Conncect4::Getdata();
+Connect4::Connect4() {
+    Connect4::Name="Connect 4";
+    Connect4::Develper="Khaled Youssef";
+    Connect4::HTP="\n\t\t\t\t\"Connect Four is a classic two-player game where the goal is to get four of your X,or,O checkers in a row\n\t\t\t\t\t either horizontally, vertically, or diagonally note in this game player 1 is X , player 2 is O\" \n";
+    Connect4::Getdata();
     player = 1;
     rowIndex = 5;
     gameEnd = false;
@@ -223,7 +226,7 @@ Conncect4::Conncect4() {
         }
     }
 }
-void Conncect4::handleInput(int input) {
+void Connect4::handleInput(int input) {
     if (rowIndex >= 0) {
         if (board[rowIndex][input] != 0) { // if the row is full
             rowIndex--;
@@ -238,7 +241,7 @@ void Conncect4::handleInput(int input) {
         rowIndex = 5;
     }
 }
-void Conncect4::checkWinner() {
+void Connect4::checkWinner() {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 7; j++)
         {
@@ -248,19 +251,19 @@ void Conncect4::checkWinner() {
                 gameEnd = true;
                 cout <<" congratulations player "<<player<<" win ! ";
             }
-            //check win with rows
+                //check win with rows
             else if (board[i][j]==player&&board[i-1][j]==player&&board[i-2][j]==player&&board[i-3][j]==player)
             {
                 gameEnd = true;
                 cout <<" congratulations player "<<player<<" win ! ";
             }
-            //to check scissors to left side
+                //to check scissors to left side
             else if (board[i][j]==player&&board[i-1][j-1]==player&&board[i-2][j-2]==player&&board[i-3][j-3]==player)
             {
                 gameEnd = true;
                 cout <<" congratulations player "<<player<<" win ! ";
             }
-            //to check scissors to right side
+                //to check scissors to right side
             else if (board[i][j]==player&&board[i-1][j+1]==player&&board[i-2][j+2]==player&&board[i-3][j+3]==player)
             {
                 gameEnd = true;
@@ -270,7 +273,7 @@ void Conncect4::checkWinner() {
         }
     }
 }
-void Conncect4::draw() {
+void Connect4::draw() {
     // to initialize the columns with its numbers
     for (int j = 0; j < 7; j++) {
         cout << "-" << j + 1 << "--";
@@ -295,7 +298,7 @@ void Conncect4::draw() {
     }
     cout << endl;
 }
-int Conncect4::play() {
+int Connect4::play() {
     draw();
     while (!gameEnd) {
         cout << "Player " << player << ": ";
@@ -306,6 +309,8 @@ int Conncect4::play() {
         checkWinner();
         player = (player == 1) ? 2 : 1;
     }
+    sleep_for(3s);
+    system("cls");
     return main();
 }
 
@@ -399,7 +404,8 @@ int TicTacToe::play() {
         cout << "\nNo winner!!\n\n" << endl;
     else
         cout << "\nThe Winner is Player (" << winner << "), congratulations!!\n\n";
-    system("pause");
+    sleep_for(3s);
+    system("cls");
     return main();
 }
 
@@ -425,81 +431,56 @@ bool Hangman::isAlreadyGuessed(char letter){
     return false;
 }
 int Hangman::play()
+{
+    char letter;
+    cout<<"Guess the word: ";
+    while(remainingAttempts>0&&guessedWord != word)
     {
-        char letter;
-        cout<<"Guess the word: ";
-        while(remainingAttempts>0&&guessedWord != word)
+        cout<<guessedWord<<endl;
+        cout<<"Enter a letter: ";
+        cin>>letter;
+        if(!((letter>='A' && letter<='Z') || (letter>='a' && letter<='z')))
         {
-            cout<<guessedWord<<endl;
-            cout<<"Enter a letter: ";
-            cin>>letter;
-            if(!((letter>='A' && letter<='Z') || (letter>='a' && letter<='z')))
+            cout<<"Please enter a valid letter."<<endl;
+            continue;
+        }
+        if(letter >= 'A' && letter <= 'Z')
+        {
+            letter=tolower(letter);  //convert to lowercase if it's uppercase
+        }
+        if(isAlreadyGuessed(letter))
+        {
+            cout<<"You've already guessed that letter."<<endl;
+            continue;
+        }
+        guessedLetters[numGuessdLetters++]=letter;
+        bool found = false;
+        for(int i=0; i<word.length();++i)
+        {
+            if(word[i]==letter)
             {
-                cout<<"Please enter a valid letter."<<endl;
-                continue;
-            }
-            if(letter >= 'A' && letter <= 'Z')
-            {
-                letter=tolower(letter);  //convert to lowercase if it's uppercase
-            }
-            if(isAlreadyGuessed(letter))
-            {
-                cout<<"You've already guessed that letter."<<endl;
-                continue;
-            }
-            guessedLetters[numGuessdLetters++]=letter;
-            bool found = false;
-            for(int i=0; i<word.length();++i)
-            {
-                if(word[i]==letter)
-                {
-                    guessedWord[i]=letter;
-                    found=true;
-                }
-            }
-            if(!found)
-            {
-                cout<<"Incorrect guess!"<<endl;
-                remainingAttempts--;
-                cout<<"Remaining attempts: "<<remainingAttempts<<endl;
-            }
-            if(guessedWord==word)
-            {
-                cout<<"Congratulations1! You guessed the word: "<<word<<endl;
-            }
-            else
-            {
-                cout<<"Sorry, you ran out of attemts :(\nThe word was: "<<word<<endl;
+                guessedWord[i]=letter;
+                found=true;
             }
         }
-        return main();
+        if(!found)
+        {
+            cout<<"Incorrect guess!"<<endl;
+            remainingAttempts--;
+            cout<<"Remaining attempts: "<<remainingAttempts<<endl;
+        }
+        if(guessedWord==word)
+        {
+            cout<<"Congratulations1! You guessed the word: "<<word<<endl;
+        }
+        else
+        {
+            cout<<"Sorry, you ran out of attempts :(\nThe word was: "<<word<<endl;
+        }
     }
+    sleep_for(3s);
+    system("cls");
+    return main();
+}
 
 //memory game
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
