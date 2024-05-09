@@ -44,7 +44,7 @@ public:
     Gussing();
 };
 
-class Conncect4:Game {
+class Connect4: Game {
 private:
     int board[6][7];
     int player;
@@ -52,7 +52,7 @@ private:
     bool gameEnd;
 
 public:
-    Conncect4();
+    Connect4();
     void handleInput(int input) ;
 
     void checkWinner() ;

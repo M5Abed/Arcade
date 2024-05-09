@@ -25,7 +25,7 @@ int main(); //main declaration to cam make it as return in classes below
 RockPaperScissors::RockPaperScissors() {
     RockPaperScissors::SetName("Rock Paper Scissors");
     RockPaperScissors::Develper="Mohamed Abed";
-    RockPaperScissors::HTP="\n\t\t\t\t\"You will play this game vs PC \n\t\t\t You will chose ROCK,PAPER OR SCISSORS and the PC will chose one also and will see who wil gain more points\" \n";
+    RockPaperScissors::HTP="\n\t\t\t\"You will play this game vs PC \n     You will chose ROCK,PAPER OR SCISSORS and the PC will chose one also and will see who wil gain more points\" \n";
     RockPaperScissors::Getdata();
     sleep_for(3s);
 }
@@ -53,6 +53,7 @@ int RockPaperScissors::play() {
         if ((input[0]=='r'&&res==1)||(input[0]=='p'&&res==2)||(input[0]=='s'&&res==3)) {
             draw=true;
             cout<<"The PC chose the same :D, We gonna play again\n";
+            system("cls");
         }
         else if ((input[0]=='r'&&res==2)) {
             cout<<"You: "<<"Rock\n";
@@ -61,8 +62,10 @@ int RockPaperScissors::play() {
             sleep_for(0.5s);
             cout<<"PC Win !!\n";
             pc++;
+            sleep_for(1.5s);
+            system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<this->Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
         else if ((input[0]=='r'&&res==3)) {
@@ -71,9 +74,11 @@ int RockPaperScissors::play() {
             cout<<"PC: "<<"Scissors\n";
             sleep_for(0.5s);
             cout<<"You Win !!\n";
-            this->Points++;
+            Points++;
+            sleep_for(1.5s);
+            system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<this->Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
         else if ((input[0]=='p'&&res==1)) {
@@ -82,9 +87,11 @@ int RockPaperScissors::play() {
             cout<<"PC: "<<"Rock\n";
             sleep_for(0.5s);
             cout<<"You Win !!\n";
-            this->Points++;
+            Points++;
+            sleep_for(1.5s);
+            system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<this->Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
         else if ((input[0]=='p'&&res==3)) {
@@ -94,8 +101,10 @@ int RockPaperScissors::play() {
             sleep_for(0.5s);
             cout<<"PC Win !!\n";
             pc++;
+            sleep_for(1.5s);
+            system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<this->Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
         else if ((input[0]=='s'&&res==1)) {
@@ -105,8 +114,10 @@ int RockPaperScissors::play() {
             sleep_for(0.5s);
             cout<<"PC Win !!\n";
             pc++;
+            sleep_for(1.5s);
+            system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<this->Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
         else if ((input[0]=='s'&&res==2)) {
@@ -115,9 +126,11 @@ int RockPaperScissors::play() {
             cout<<"PC: "<<"Paper\n";
             sleep_for(0.5s);
             cout<<"You Win !!\n";
-            this->Points++;
+            Points++;
+            sleep_for(1.5s);
+            system("cls");
             cout<<"-------------------------\n";
-            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<this->Points<<"\nPC: "<<pc<<endl;
+            cout<<"\t\t\"Score\"\t\t\n"<<"You: "<<Points<<"\nPC: "<<pc<<endl;
             cout<<"-------------------------\n";
         }
     }while (draw||input[0]!='e');
@@ -162,10 +175,11 @@ int Gussing::play(){
     value = temp % (high - low + 1) + low;
     cout<<"Now we are ready :)\n"<<flush;
     sleep_for(0.5s);
+    system("cls");
     cout<<"\bGuess the number between 0 and "<< high<<": \n";
     cin>>gussed;
     if (gussed==value)
-        cout<<"WOWW YOU ARE RIGHT !!";
+        cout<<"WOW YOU ARE RIGHT !!";
     else {
         do {
             if (gussed==value) {
@@ -214,7 +228,7 @@ int Gussing::play(){
 Connect4::Connect4() {
     Connect4::Name="Connect 4";
     Connect4::Develper="Khaled Youssef";
-    Connect4::HTP="\n\t\t\t\t\"Connect Four is a classic two-player game where the goal is to get four of your X,or,O checkers in a row\n\t\t\t\t\t either horizontally, vertically, or diagonally note in this game player 1 is X , player 2 is O\" \n";
+    Connect4::HTP="\n\t\t\"Connect Four is a classic two-player game where the goal is to get four of your X,or,O checkers in a row\n     either horizontally, vertically, or diagonally note in this game player 1 is X , player 2 is O\" \n";
     Connect4::Getdata();
     player = 1;
     rowIndex = 5;
@@ -225,6 +239,7 @@ Connect4::Connect4() {
             board[i][j] = 0;
         }
     }
+    sleep_for(1.5s);
 }
 void Connect4::handleInput(int input) {
     if (rowIndex >= 0) {
@@ -249,31 +264,32 @@ void Connect4::checkWinner() {
             if (board[i][j]==player&&board[i][j-1]==player&&board[i][j-2]==player&&board[i][j-3]==player)
             {
                 gameEnd = true;
-                cout <<" congratulations player "<<player<<" win ! ";
+                cout <<" congratulations player "<<player<<" win ! \n";
             }
                 //check win with rows
             else if (board[i][j]==player&&board[i-1][j]==player&&board[i-2][j]==player&&board[i-3][j]==player)
             {
                 gameEnd = true;
-                cout <<" congratulations player "<<player<<" win ! ";
+                cout <<" congratulations player "<<player<<" win ! \n";
             }
                 //to check scissors to left side
             else if (board[i][j]==player&&board[i-1][j-1]==player&&board[i-2][j-2]==player&&board[i-3][j-3]==player)
             {
                 gameEnd = true;
-                cout <<" congratulations player "<<player<<" win ! ";
+                cout <<" congratulations player "<<player<<" win ! \n";
             }
                 //to check scissors to right side
             else if (board[i][j]==player&&board[i-1][j+1]==player&&board[i-2][j+2]==player&&board[i-3][j+3]==player)
             {
                 gameEnd = true;
-                cout <<" congratulations player "<<player<<" win ! ";
+                cout <<" congratulations player "<<player<<" win ! \n";
             }
 
         }
     }
 }
 void Connect4::draw() {
+    system("cls");
     // to initialize the columns with its numbers
     for (int j = 0; j < 7; j++) {
         cout << "-" << j + 1 << "--";
@@ -309,7 +325,7 @@ int Connect4::play() {
         checkWinner();
         player = (player == 1) ? 2 : 1;
     }
-    sleep_for(3s);
+    system("pause");
     system("cls");
     return main();
 }

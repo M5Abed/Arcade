@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-        int ans;
+    int ans;
     do {
         cout<<"--------------------------------------------------\n";
         cout<<"             \"Welcome to ARCADE\"             \n";
@@ -20,22 +20,27 @@ int main() {
     }while (ans<1||ans>5);
     switch (ans) {
         case 1: {
+            system("cls");
             Gussing gussing;
             gussing.play();
         }
         case 2: {
+            system("cls");
             RockPaperScissors RPS;
             RPS.play();
         }
         case 3: {
+            system("cls");
             TicTacToe XO;
             XO.play();
         }
         case 4: {
-            Conncect4 c4;
+            system("cls");
+            Connect4 c4;
             c4.play();
         }
         case 5: {
+            system("cls");
             Hangman hangman;
             hangman.play();
         }
