@@ -44,7 +44,7 @@ public:
     Gussing();
 };
 
-class Connect4: Game {
+class Connect4: public Game {
 private:
     int board[6][7];
     int player;
@@ -72,7 +72,7 @@ public:
     int play() ;
 };
 
-class Hangman :Game
+class Hangman : public Game
 {
 private:
     string words[5]={"apple","banana","kiwi","orange","grape"};
@@ -90,4 +90,74 @@ public:
 
 };
 
+class memory : public Game{
+public:
+    virtual void displayBoard() const = 0;
+
+    virtual bool flipCard(int row, int col) = 0;
+
+    virtual bool isGameOver() const = 0;
+
+    virtual ~memory() {}
+};
+class Card {
+private:
+    char symbol;
+    bool revealed;
+
+public:
+
+    Card(char sym) : symbol(sym), revealed(false) {}
+    char getSymbol() const {
+        return revealed ? symbol : '#';
+
+    }
+
+    char getActualSymbol() const {
+        return symbol;
+
+    }
+
+    bool isRevealed() const {
+        return revealed;
+
+    }
+
+    void reveal() {
+        revealed = true;
+    }
+
+    void conceal() {
+        revealed = false;
+    }
+};
+class MemoryGame : public memory {
+private:
+
+    vector<vector<Card>> board;
+
+    int numRows;
+
+    int numCols;
+
+    int pairsFound;
+
+    int movesLeft;
+
+public:
+    MemoryGame();
+    MemoryGame(int rows, int cols);
+    void displayBoard() const override;
+    bool flipCard(int row, int col) override;
+    bool isGameOver() const override;
+    bool checkMatch(int row1, int col1, int row2, int col2) const;
+    int getPairsFound() const { return pairsFound; }
+    int getNumRows() const { return numRows; }
+    int getNumCols() const { return numCols; }
+    void incrementPairsFound() { pairsFound++; }
+    void decrementMovesLeft() { movesLeft--; }
+    void playBoard() const;
+    int play();
+
+};
 #endif //GAME_H

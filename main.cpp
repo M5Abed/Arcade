@@ -14,10 +14,10 @@ int main() {
         cout<<"     3. \"Tic Tac Toe\"             \n";
         cout<<"     4. \"Connect Four\"             \n";
         cout<<"     5. \"Hang Man\"             \n";
+        cout<<"     6. \"Memory Game\"             \n";
         cout<<"--------------------------------------------------\n";
-        cout<<"Note: You can back to this menu by type \"exit\" \n"; //MAKE SURE TO ADD THIS IN ALL GAMES
         cin>>ans;
-    }while (ans<1||ans>5);
+    }while (ans<1||ans>6);
     switch (ans) {
         case 1: {
             system("cls");
@@ -43,6 +43,11 @@ int main() {
             system("cls");
             Hangman hangman;
             hangman.play();
+        }
+        case 6:{
+            system("cls");
+            MemoryGame game(4, 4);
+            game.play();
         }
         default:
             cout<<"Error";

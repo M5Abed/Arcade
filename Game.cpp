@@ -24,8 +24,8 @@ int main(); //main declaration to cam make it as return in classes below
 //Rock paper scissors
 RockPaperScissors::RockPaperScissors() {
     RockPaperScissors::SetName("Rock Paper Scissors");
-    RockPaperScissors::Develper="Mohamed Abed";
-    RockPaperScissors::HTP="\n\t\t\t\"You will play this game vs PC \n     You will chose ROCK,PAPER OR SCISSORS and the PC will chose one also and will see who wil gain more points\" \n";
+    RockPaperScissors::SetDev("Mohamed Abed");
+    RockPaperScissors::SetHTP("\n\t\t\t\"You will play this game vs PC \n     You will chose ROCK,PAPER OR SCISSORS and the PC will chose one also and will see who wil gain more points\" \n");
     RockPaperScissors::Getdata();
     sleep_for(3s);
 }
@@ -52,6 +52,7 @@ int RockPaperScissors::play() {
         }
         if ((input[0]=='r'&&res==1)||(input[0]=='p'&&res==2)||(input[0]=='s'&&res==3)) {
             draw=true;
+            sleep_for(0.5s);
             cout<<"The PC chose the same :D, We gonna play again\n";
             sleep_for(1.5s);
             system("cls");
@@ -140,9 +141,9 @@ int RockPaperScissors::play() {
 
 //Gussing game
 Gussing::Gussing() {
-    Gussing::Name="Gussing Game";
-    Gussing::Develper="Mohamed Abed";
-    Gussing::HTP="\n\t\"You will enter a number(x) to guess random number between 0 and (x) \n      then you will have 3 attempts to guss the random number that computer chose\" \n";
+    Gussing::SetName("Gussing Game");
+    Gussing::SetDev("Mohamed Abed");
+    Gussing::SetHTP("\n\t\"You will enter a number(x) to guess random number between 0 and (x) \n      then you will have 3 attempts to guss the random number that computer chose\" \n");
     Gussing::Getdata();
     sleep_for(3s);
 }
@@ -227,9 +228,9 @@ int Gussing::play(){
 
 //Connect 4
 Connect4::Connect4() {
-    Connect4::Name="Connect 4";
-    Connect4::Develper="Khaled Youssef";
-    Connect4::HTP="\n\t\t\"Connect Four is a classic two-player game where the goal is to get four of your X,or,O checkers in a row\n     either horizontally, vertically, or diagonally note in this game player 1 is X , player 2 is O\" \n";
+    Connect4::SetName("Connect 4");
+    Connect4::SetDev("Khaled Youssef");
+    Connect4::SetDev("\n\t\t\"Connect Four is a classic two-player game where the goal is to get four of your X,or,O checkers in a row\n     either horizontally, vertically, or diagonally note in this game player 1 is X , player 2 is O\" \n");
     Connect4::Getdata();
     player = 1;
     rowIndex = 5;
@@ -333,9 +334,9 @@ int Connect4::play() {
 
 //TIc Tac Toe
 TicTacToe::TicTacToe() {
-    TicTacToe::Name="Tic Tac Toe";
-    TicTacToe::Develper="Mariam Mohamed";
-    TicTacToe::HTP="\n\t\t\t\t\"Classic TicTacToe or as known as (X,O), You need to make your character (X or O) be in the same line\n\t\t\t\t\t\t\teither this line is horizontally, vertically, or diagonally\" \n";
+    TicTacToe::SetName("Tic Tac Toe");
+    TicTacToe::SetDev("Mariam Mohamed");
+    TicTacToe::SetHTP("\n\t\"Classic TicTacToe or as known as (X,O), You need to make your character (X or O) be in the same line\n\t\teither this line is horizontally, vertically, or diagonally\" \n");
     TicTacToe::Getdata();
     sleep_for(3s);
 }
@@ -428,9 +429,9 @@ int TicTacToe::play() {
 
 //HangMan
 Hangman::Hangman(){
-    Hangman::Name="HangMan";
-    Hangman::Develper="Salma Hany";
-    Hangman::HTP="\n\t\t\"You have 5 attempts to guess the right word character by character\" \n";
+    Hangman::SetDev("HangMan");
+    Hangman::SetDev("Salma Hany");
+    Hangman::SetHTP("\n\t\t\"You have 5 attempts to guess the right word character by character\" \n");
     Hangman::Getdata();
     sleep_for(3s);
     srand(time(0));  //each time the program runs a different sequence of random numbers will be generated
@@ -448,7 +449,6 @@ bool Hangman::isAlreadyGuessed (char letter)
     }
     return false;
 }
-
 int Hangman::play()
 {
     char letter;
@@ -503,5 +503,111 @@ int Hangman::play()
     return main();
 }
 
-
 //memory game
+MemoryGame::MemoryGame() {
+    MemoryGame::SetName("Memory game");
+    MemoryGame::SetDev("Menna");
+    MemoryGame::SetHTP("\n\t You will see 16 card for 5 seconds \n\tand you will need to remember it's positions\" \n");
+}
+MemoryGame::MemoryGame(int rows, int cols): numRows(rows), numCols(cols), pairsFound(0), movesLeft(rows * cols / 2) {
+    vector<char> symbols = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+    int numPairs = (numRows * numCols) / 2;
+    srand(static_cast<unsigned int>(time(0)));
+
+    // Select random symbols and pair them
+    vector<char> chosenSymbols;
+    for (int i = 0; i < numPairs; ++i) {
+        chosenSymbols.push_back(symbols[i]);
+        chosenSymbols.push_back(symbols[i]); // Pair each symbol
+    }
+
+    // Shuffle the chosen symbols to randomize their positions
+    random_shuffle(chosenSymbols.begin(), chosenSymbols.end());
+
+    // Populate the game board with cards having randomized symbols
+    for (int i = 0; i < numRows; ++i) {
+        vector<Card> row;
+        for (int j = 0; j < numCols; ++j) {
+            char symbol = chosenSymbols[i * numCols + j];
+            row.push_back(Card(symbol));
+        }
+        board.push_back(row);
+    }
+}
+void MemoryGame::displayBoard() const {
+    for (int i = 0; i < numRows; ++i) {
+        for (int j = 0; j < numCols; ++j) {
+            cout << board[i][j].getSymbol() << ' ';
+        }
+        cout << endl;
+    }
+}
+void MemoryGame::playBoard() const {
+    for (int i = 0; i < numRows; ++i) {
+        for (int j = 0; j < numCols; ++j) {
+            cout << board[i][j].getActualSymbol() << ' ';
+        }
+        cout << endl;
+    }
+}
+bool MemoryGame::flipCard(int row, int col) {
+    if (!board[row][col].isRevealed()) {
+        board[row][col].reveal();
+        return true;
+    }
+    return false;
+}
+bool MemoryGame::isGameOver() const {
+    return pairsFound == (numRows * numCols) / 2 || movesLeft == 0;
+}
+bool MemoryGame::checkMatch(int row1, int col1, int row2, int col2) const {
+    return board[row1][col1].getSymbol() == board[row2][col2].getSymbol();
+}
+int MemoryGame::play() {
+    this->playBoard();
+    cout << "All cards revealed. Get ready!" << endl;
+    sleep_for(4s);
+    system("cls");
+    while (!this->isGameOver()) {
+        this->displayBoard();
+        int row1, col1, row2, col2;
+        cout << "Enter row and column of first card to flip (1-4): ";
+        cin >> row1 >> col1;
+        cout << "Enter row and column of second card to flip (1-4): ";
+        cin >> row2 >> col2;
+
+        // Adjust input indices to 0-based for internal use
+        row1--; col1--; row2--; col2--;
+
+        if (row1 < 0 || row1 >= this->getNumRows() || col1 < 0 || col1 >= this->getNumCols() ||
+            row2 < 0 || row2 >= this->getNumRows() || col2 < 0 || col2 >= this->getNumCols()) {
+            cout << "Invalid input. Please enter valid row and column numbers (1-" << this->getNumRows() << ")." << endl;
+            continue;
+        }
+        bool flipped1 = this->flipCard(row1, col1);
+        bool flipped2 = this->flipCard(row2, col2);
+        if (flipped1 && flipped2) {
+            if (this->checkMatch(row1, col1, row2, col2)) {
+                system("cls");
+                cout << "Match found!" << endl;
+                this->incrementPairsFound();
+            } else {
+                system("cls");
+                cout << "No match. Try again." << endl;
+                this->flipCard(row1, col1); // Flip back if no match
+                this->flipCard(row2, col2); // Flip back if no match
+            }
+            this->decrementMovesLeft();
+        } else {
+            cout << "Invalid move. One or both cards are already revealed." << endl;
+        }
+        cout << endl;
+    }
+    if (this->isGameOver() && this->getPairsFound() == (this->getNumRows() * this->getNumCols()) / 2) {
+        cout << "Congratulations! You found all pairs." << endl;
+    } else {
+        cout << "Sorry, you've used all your moves. Good luck next time!" << endl;
+    }
+
+    return main();
+}
