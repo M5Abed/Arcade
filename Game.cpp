@@ -429,7 +429,7 @@ int TicTacToe::play() {
 
 //HangMan
 Hangman::Hangman(){
-    Hangman::SetDev("HangMan");
+    Hangman::SetName("HangMan");
     Hangman::SetDev("Salma Hany");
     Hangman::SetHTP("\n\t\t\"You have 5 attempts to guess the right word character by character\" \n");
     Hangman::Getdata();
@@ -500,6 +500,8 @@ int Hangman::play()
     {
         cout<<"Sorry, you ran out of attempts :(\nThe word was: "<<word<<endl;
     }
+    system("pause");
+    system("cls");
     return main();
 }
 
