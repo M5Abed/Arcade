@@ -1,6 +1,5 @@
 #include "Game.h"
 #include <utility>
-
 //main class
 void Game::SetName(string name) {
     this->Name = std::move(name);
@@ -11,13 +10,20 @@ void Game::SetDev(string dev) {
 void Game::SetHTP(string HTP) {
     this->HTP = std::move(HTP);
 }
-void Game::Getdata() {
+void Game::Welcome(const string& GameName) {
+    system("cls");
+    cout<<"----------------------------------------\n";
+    cout<<"     \"Welcome to "<< GameName << "\"             \n";
+    cout<<"----------------------------------------\n";
+    sleep_for(1s);
+}
+void Game::GetData() {
     cout<<"The name of the the game: "<<Name<<endl;
     sleep_for(1s);
     cout<<"This game is developed by: "<<Develper<<endl;
     sleep_for(1s);
     cout<<"How to play this game: "<<HTP<<endl;
-
+    system("pause");
 }
 int main(); //main declaration to cam make it as return in classes below
 
@@ -25,18 +31,15 @@ int main(); //main declaration to cam make it as return in classes below
 RockPaperScissors::RockPaperScissors() {
     RockPaperScissors::SetName("Rock Paper Scissors");
     RockPaperScissors::SetDev("Mohamed Abed");
-    RockPaperScissors::SetHTP("\n\t\t\t\"You will play this game vs PC \n     You will chose ROCK,PAPER OR SCISSORS and the PC will chose one also and will see who wil gain more points\" \n");
-    RockPaperScissors::Getdata();
+    RockPaperScissors::SetHTP("\n\t\t\t\"You will play this game vs PC \n     You will choose ROCK,PAPER OR SCISSORS and the PC will chose one also and will see who wil gain more points\" \n");
+    RockPaperScissors::GetData();
     sleep_for(3s);
 }
 int RockPaperScissors::play() {
     bool draw=false;
     int pc=0;
     string input,output;
-    cout<<"----------------------------------------\n";
-    cout<<"\"Welcome to ROCK, PAPER, SCISSORS game\"\n";
-    cout<<"----------------------------------------\n";
-    sleep_for(1s);
+    RockPaperScissors::Welcome(this->Name);
     do {
         srand(time(nullptr));
         Rand = rand();
@@ -48,7 +51,7 @@ int RockPaperScissors::play() {
                 i+=32;
         }
         if (input[0]=='e') {
-            system("clear");
+            system("cls");
         }
         if ((input[0]=='r'&&res==1)||(input[0]=='p'&&res==2)||(input[0]=='s'&&res==3)) {
             draw=true;
@@ -139,36 +142,39 @@ int RockPaperScissors::play() {
     return main();
 }
 
-//Gussing game
-Gussing::Gussing() {
-    Gussing::SetName("Gussing Game");
-    Gussing::SetDev("Mohamed Abed");
-    Gussing::SetHTP("\n\t\"You will enter a number(x) to guess random number between 0 and (x) \n      then you will have 3 attempts to guss the random number that computer chose\" \n");
-    Gussing::Getdata();
-    sleep_for(3s);
-}
-int Gussing::play(){
-    int gussed;
-    string input ;
-    cout<<"----------------------------------------\n";
-    cout<<"     \"Welcome to gussing game\"             \n";
-    cout<<"----------------------------------------\n";
+//Guessing game
+Guessing::Guessing() {
+    Guessing::SetName("Guessing Game");
+    Guessing::SetDev("Mohamed Abed");
+    Guessing::SetHTP("\n\t\"You will enter a number(x) to guess random number between 0 and (x) \n      then you will have 3 attempts to guss the random number that computer chose\" \n");
+    Guessing::GetData();
+    sleep_for(1s);
+} //game details
+int Guessing::Guessed(int &x) {
+    do {
+        cout << "\bGuess the number between 0 and " << high << ": \n";
+        cin >> x;
+    } while (x<0 || x>high);
+    return x;
+} //To make sure that the input is valid value
+int Guessing::play(){
+    Guessing::Welcome(this->Name);
+    int guessed;
+    string input;
     cout<<"You want to play in range from 0 to ... ?\n";
     cin>>high;
-    do {
         cout<<"Are You sure you want to guess number between 0 and "<<high<<"? (y/n)\n";
         cin>>input;
         if (input[0]<97) {
             for (int i=0;i<input.size();i++)
                 input[i]+=32;
         }
-    }while (input[0]!='y'&&input[0]!='e'&&input[0]!='n');
     if (input[0]=='y') {
         cout<< "wait a second ...\n"<<flush;
         sleep_for(1.5s);
     }
-    else if (input[0]=='e'||input[0]=='n'){
-        system("pause");
+    else {
+        system("cls");
         return main();
     }
 
@@ -178,60 +184,59 @@ int Gussing::play(){
     cout<<"Now we are ready :)\n"<<flush;
     sleep_for(0.5s);
     system("cls");
-    cout<<"\bGuess the number between 0 and "<< high<<": \n";
-    cin>>gussed;
-    if (gussed==value)
-        cout<<"WOW YOU ARE RIGHT !!";
+    Guessed(guessed);
+    if (guessed==value)
+        cout<<"WOW YOU GUESSED IT RIGHT !!\n";
     else {
         do {
-            if (gussed==value) {
-                cout<<"WOWW YOU ARE RIGHT !! \n";
+            if (guessed==value) {
+                cout<<"WOW YOU GUESSED IT RIGHT !!\n";
                 break;
             }
-            else if ((gussed-value)>5) {
+            else if ((guessed-value)>5) {
                 cout<<"Wrong guess but you still have "<<3-temp2<<" attempts\n";
                 cout<<"It's much lower than this !\n";
-                cin>>gussed;
+                cin>>guessed;
             }
-            else if ((gussed-value)<=5&&(gussed-value)>0) {
+            else if ((guessed-value)<=5&&(guessed-value)>0) {
                 cout<<"Wrong guess but you still have "<<3-temp2<<" attempts\n";
                 cout<<"You are not much away :D (It's lower than this ;) ) ! \n";
-                cin>>gussed;
+                cin>>guessed;
             }
-            else if ((gussed-value)<0&&(gussed-value)>=-5) {
+            else if ((guessed-value)<0&&(guessed-value)>=-5) {
                 cout<<"Wrong guess but you still have "<<3-temp2<<" attempts\n";
                 cout<<"You are not much away :D (It's higher than this ;) ) ! \n";
-                cin>>gussed;
+                cin>>guessed;
             }
-            else if ((gussed-value)<0&&(gussed-value)<-5) {
+            else if ((guessed-value)<0&&(guessed-value)<-5) {
                 cout<<"Wrong guess but you still have "<<3-temp2<<" attempts\n";
                 cout<<"You are not much away :D (It's much higher than this ;) ) ! \n";
                 cout<<"It's much higher than this !\n";
-                cin>>gussed;
+                cin>>guessed;
 
             }
             temp2++;
         }while (temp2<3);
     }
-    if (gussed==value) {
-        cout<<"\nYou got it right and we was happy to play with you :D \n";
-        cout<<"Thanks to play our game :D  \n";
-    }
-    else {
-        cout<<"It seems like that's not your day :D \n";
-        cout<<"The answer was: "<<value<<endl;
-    }
-    system("pause");
-    system("cls");
-    return main();
+if (guessed==value) {
+    cout<<"\nYou got it right and we was happy to play with you :D \n";
+    cout<<"Thanks to play our game :D  \n";
 }
-
+else {
+    cout<<"It seems like that's not your day :D \n";
+    cout<<"The answer was: "<<value<<endl;
+}
+system("pause");
+system("cls");
+return main();
+}
 //Connect 4
 Connect4::Connect4() {
     Connect4::SetName("Connect 4");
     Connect4::SetDev("Khaled Youssef");
-    Connect4::SetDev("\n\t\t\"Connect Four is a classic two-player game where the goal is to get four of your X,or,O checkers in a row\n     either horizontally, vertically, or diagonally note in this game player 1 is X , player 2 is O\" \n");
-    Connect4::Getdata();
+    Connect4::SetHTP("\n\"Connect Four is a classic two-player game where the goal is to get four of your X,or,O checkers in a row\n   \teither horizontally, vertically, or diagonally NOTE THAT:"
+                     " in this game player 1 is X , player 2 is O\" \n");
+    Connect4::GetData();
     player = 1;
     rowIndex = 5;
     gameEnd = false;
@@ -241,7 +246,6 @@ Connect4::Connect4() {
             board[i][j] = 0;
         }
     }
-    sleep_for(1.5s);
 }
 void Connect4::handleInput(int input) {
     if (rowIndex >= 0) {
@@ -317,6 +321,8 @@ void Connect4::draw() {
     cout << endl;
 }
 int Connect4::play() {
+    Connect4::Welcome(this->Name);
+    sleep_for(2s);
     draw();
     while (!gameEnd) {
         cout << "Player " << player << ": ";
@@ -337,7 +343,7 @@ TicTacToe::TicTacToe() {
     TicTacToe::SetName("Tic Tac Toe");
     TicTacToe::SetDev("Mariam Mohamed");
     TicTacToe::SetHTP("\n\t\"Classic TicTacToe or as known as (X,O), You need to make your character (X or O) be in the same line\n\t\teither this line is horizontally, vertically, or diagonally\" \n");
-    TicTacToe::Getdata();
+    TicTacToe::GetData();
     sleep_for(3s);
 }
 char TicTacToe::whoWin() {
@@ -389,7 +395,6 @@ char TicTacToe::whoWin() {
 }
 void TicTacToe::printMatrix() {
     system("cls");
-
     for (int x = 0; x < 3; x++) {
         for (int y = 0; y < 3; y++) {
             cout << matrix[x][y] << '\t';
@@ -398,6 +403,8 @@ void TicTacToe::printMatrix() {
     }
 }
 int TicTacToe::play() {
+    TicTacToe::Welcome(this->Name);
+    sleep_for(2s);
     while (whoWin() == '.') {
         printMatrix();
         char pos;
@@ -429,11 +436,10 @@ int TicTacToe::play() {
 
 //HangMan
 Hangman::Hangman(){
-    Hangman::SetName("HangMan");
+    Hangman::SetName("HangMan Game");
     Hangman::SetDev("Salma Hany");
     Hangman::SetHTP("\n\t\t\"You have 5 attempts to guess the right word character by character\" \n");
-    Hangman::Getdata();
-    sleep_for(3s);
+    Hangman::GetData();
     srand(time(0));  //each time the program runs a different sequence of random numbers will be generated
     word = words[rand()%5];  //rand() selects a random word "%5" makes sure the result is within the range of indices of array
     guessedWord = string(word.length(),'_');
@@ -449,10 +455,9 @@ bool Hangman::isAlreadyGuessed (char letter)
     }
     return false;
 }
-int Hangman::play()
-{
+int Hangman::play(){
+    Hangman::Welcome(this->Name);
     char letter;
-
     while(remainingAttempts > 0 && guessedWord != word)
     {
         cout<<"Guess the word: ";
@@ -506,12 +511,14 @@ int Hangman::play()
 }
 
 //memory game
-MemoryGame::MemoryGame() {
+MemoryGame::MemoryGame(int rows, int cols): numRows(rows), numCols(cols), pairsFound(0), movesLeft(rows * cols / 2) {
+
     MemoryGame::SetName("Memory game");
     MemoryGame::SetDev("Menna");
-    MemoryGame::SetHTP("\n\t You will see 16 card for 5 seconds \n\tand you will need to remember it's positions\" \n");
-}
-MemoryGame::MemoryGame(int rows, int cols): numRows(rows), numCols(cols), pairsFound(0), movesLeft(rows * cols / 2) {
+    MemoryGame::SetHTP("\n\t \""
+                       "You will see 16 card for 5 seconds \n\tand you will need to remember it's positions\" \n");
+    MemoryGame::GetData();
+
     vector<char> symbols = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
     int numPairs = (numRows * numCols) / 2;
     srand(static_cast<unsigned int>(time(0)));
@@ -566,6 +573,8 @@ bool MemoryGame::checkMatch(int row1, int col1, int row2, int col2) const {
     return board[row1][col1].getSymbol() == board[row2][col2].getSymbol();
 }
 int MemoryGame::play() {
+    MemoryGame::Welcome(this->Name);
+    system("cls");
     this->playBoard();
     cout << "All cards revealed. Get ready!" << endl;
     sleep_for(4s);

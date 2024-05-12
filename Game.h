@@ -22,7 +22,8 @@ public:
     void SetName(string);
     void SetDev(string);
     void SetHTP(string);
-    void Getdata();
+    static void Welcome(const string&);
+    void GetData();
 };
 
 class RockPaperScissors:public Game{
@@ -35,13 +36,14 @@ public:
     RockPaperScissors();
 };
 
-class Gussing:public Game{
+class Guessing:public Game{
 private:
     int high=0,low=0,value=0;
     string input;
 public:
     int play();
-    Gussing();
+    Guessing();
+    int Guessed(int&);
 };
 
 class Connect4: public Game {
@@ -145,7 +147,6 @@ private:
     int movesLeft;
 
 public:
-    MemoryGame();
     MemoryGame(int rows, int cols);
     void displayBoard() const override;
     bool flipCard(int row, int col) override;

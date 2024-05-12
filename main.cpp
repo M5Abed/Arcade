@@ -9,7 +9,7 @@ int main() {
         cout<<"--------------------------------------------------\n";
         cout<<"\nChoose your game\n";
         cout<<"--------------------------------------------------\n";
-        cout<<"     1. \"Gussing Game\"             \n";
+        cout<<"     1. \"Guessing Game\"             \n";
         cout<<"     2. \"Rock,Paper, Scissors\"             \n";
         cout<<"     3. \"Tic Tac Toe\"             \n";
         cout<<"     4. \"Connect Four\"             \n";
@@ -21,33 +21,39 @@ int main() {
     switch (ans) {
         case 1: {
             system("cls");
-            Gussing gussing;
-            gussing.play();
+            auto *guessing = new Guessing;
+            guessing->play();
+            delete guessing;
         }
         case 2: {
             system("cls");
-            RockPaperScissors RPS;
-            RPS.play();
+            auto *RPS = new RockPaperScissors;
+            RPS->play();
+            delete RPS;
         }
         case 3: {
             system("cls");
-            TicTacToe XO;
-            XO.play();
+            auto *XO =new TicTacToe;
+            XO->play();
+            delete XO;
         }
         case 4: {
             system("cls");
-            Connect4 c4;
-            c4.play();
+            auto *c4 = new Connect4;
+            c4->play();
+            delete c4;
         }
         case 5: {
             system("cls");
-            Hangman hangman;
-            hangman.play();
+            auto *hangman = new Hangman ;
+            hangman->play();
+            delete hangman;
         }
-        case 6:{
+        case 6: {
             system("cls");
-            MemoryGame game(4, 4);
-            game.play();
+            auto *game = new MemoryGame(4, 4);
+            game->play();
+            delete game;
         }
         default:
             cout<<"Error";
