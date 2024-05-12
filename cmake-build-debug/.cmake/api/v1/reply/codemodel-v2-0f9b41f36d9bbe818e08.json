@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "Arcasde_hub",
+					"name" : "Arcade_hub",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "Arcasde_hub::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Arcasde_hub-Debug-9a36d0af406d7f938d57.json",
-					"name" : "Arcasde_hub",
+					"id" : "Arcade_hub::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Arcade_hub-Debug-53e9156d68dbae80d013.json",
+					"name" : "Arcade_hub",
 					"projectIndex" : 0
 				}
 			]

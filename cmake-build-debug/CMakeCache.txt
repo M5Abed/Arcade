@@ -15,6 +15,15 @@
 ########################
 
 //Value Computed by CMake
+Arcade_hub_BINARY_DIR:STATIC=C:/Users/moham/CLionProjects/Arcasde hub/cmake-build-debug
+
+//Value Computed by CMake
+Arcade_hub_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Arcade_hub_SOURCE_DIR:STATIC=C:/Users/moham/CLionProjects/Arcasde hub
+
+//Value Computed by CMake
 Arcasde_hub_BINARY_DIR:STATIC=C:/Users/moham/CLionProjects/Arcasde hub/cmake-build-debug
 
 //Value Computed by CMake
@@ -166,7 +175,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Arcasde_hub
+CMAKE_PROJECT_NAME:STATIC=Arcade_hub
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/Users/moham/AppData/Local/JetBrains/CLion 2023.2.2/bin/mingw/bin/ranlib.exe

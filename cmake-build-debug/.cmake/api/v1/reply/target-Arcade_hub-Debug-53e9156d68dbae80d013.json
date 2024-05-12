@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Arcasde_hub.exe"
+			"path" : "Arcade_hub.exe"
 		},
 		{
-			"path" : "Arcasde_hub.pdb"
+			"path" : "Arcade_hub.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -57,7 +57,7 @@
 			]
 		}
 	],
-	"id" : "Arcasde_hub::@6890427a1f51a3e7e1df",
+	"id" : "Arcade_hub::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -77,8 +77,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "Arcasde_hub",
-	"nameOnDisk" : "Arcasde_hub.exe",
+	"name" : "Arcade_hub",
+	"nameOnDisk" : "Arcade_hub.exe",
 	"paths" : 
 	{
 		"build" : ".",
